@@ -18,6 +18,7 @@ export const MainRoute = () => {
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
   const [ cartItems, setCartItems ] = useState([]);
+  const[newData, setNewData]=useState(false)
 
 
   function fetchCartItems(){
@@ -36,7 +37,7 @@ export const MainRoute = () => {
         console.log(products);
         setProducts(products);
       });
-  }, []);
+  }, [newData]);
 
   useEffect(()=>{
     fetch('/users')
@@ -47,7 +48,9 @@ export const MainRoute = () => {
     })
   },[])
 
-
+function newFetch(){
+  setNewData((newData)=>!newData)
+}
   const[food, setFood]=useState({})
 
   function addCart(foodId){
@@ -69,7 +72,7 @@ export const MainRoute = () => {
       <Route exact path="/not-found" element={<NotFound />} />
       <Route exact path="/products" element={<Products addCart={addCart} products={products} users={users}/>} />
       {/* <Route exact path="/product" element={<Product product={product} users={users}/>} /> */}
-    <Route exact path="/cart" element={<Cart food={food} users={users} products={cartItems} getUpdatedItems={fetchCartItems}/>} />
+    <Route exact path="/cart" element={<Cart newFetch={newFetch} food={food} users={users} products={cartItems} getUpdatedItems={fetchCartItems}/>} />
     </Routes>
     </>
   );

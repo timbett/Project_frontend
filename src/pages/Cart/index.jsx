@@ -1,22 +1,19 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
-import { useEffect, useState } from 'react'
 
-function Cart({ food }){
-  console.log(food)
+import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
+import {useNavigate} from 'react-router-dom'
+
+function Cart({ food, newFetch }){
+
+  const navigate=useNavigate()
+ 
+  function handleDelete(id){
+    console.log(id)
+    fetch(`/foods/${id}`,{
+      method:'DELETE'
+    })
+    newFetch()
+    navigate('/products')
+  }
     return (
       <div className="relative">
       <div className="relative h-72 overflow-hidden rounded-lg">
@@ -43,7 +40,7 @@ function Cart({ food }){
           Ksh: {food.price}
         </p>
       </div>
-      <button>Remove</button>
+      <button onClick={()=>handleDelete(food.id)}>Buy</button>
     </div>
   )
 }

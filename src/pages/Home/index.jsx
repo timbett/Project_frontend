@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./home.css"
+
 export default function HomePage({ onLogin }) {
   const [name, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,9 +40,12 @@ export default function HomePage({ onLogin }) {
     });
   }
   return (
-    <div className="signup">
-      <span className="signuptittle">Sign Up Here</span>
+    
+    <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    
       <form onSubmit={handleSubmit} className="registerform">
+        <fieldset>
+          <legend>SIGN UP HERE</legend>
         <label>Email</label>
         <input
           onChange={(e) => setEmail(e.target.value)}
@@ -49,15 +54,15 @@ export default function HomePage({ onLogin }) {
           type="email"
           value={email}
           placeholder="Enter your email..."
-        />
-        <label>username</label>
+        /><br></br>
+        <label>Username</label>
         <input
           onChange={(e) => setUsername(e.target.value)}
           id="number"
           className="registerinput"
           type="text"
           placeholder="Enter your username..."
-        />
+        /><br></br>
         {/* <label>Location</label>
         <input
           id="text"
@@ -74,7 +79,7 @@ export default function HomePage({ onLogin }) {
           value={password}
           placeholder="Enter your password..."
         />
-        <label>Confirmation Password</label>
+        <label>Confirm Password</label>
         <input
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           id="text"
@@ -82,7 +87,7 @@ export default function HomePage({ onLogin }) {
           type="password"
           value={passwordConfirmation}
           placeholder="Confirm password..."
-        />
+        /><br></br>
         <button className="loginbutton">Sign Up</button>
         <p>
           Already Signed Up?
@@ -90,6 +95,7 @@ export default function HomePage({ onLogin }) {
             Login Here
           </Link>
         </p>
+        </fieldset>
       </form>
     </div>
   );
