@@ -1,0 +1,28 @@
+body{
+    background: url(/src/img/Diabetes-Superfoods-min.jpg);
+    background-size: cover;
+    /* background: size 1500px; */
+   
+}
+label, input {
+    display: block;
+}
+
+label {
+    margin-bottom: 20px;
+    font-size:20px;
+    font-weight: bold;
+}
+
+form{
+    margin-left: 400px;
+}
+fieldset{
+    border: 3px solid black;
+    padding: 10px;
+    width: 70px;
+}
+legend{
+    font-size: larger;
+    font-weight: bolder;
+}
