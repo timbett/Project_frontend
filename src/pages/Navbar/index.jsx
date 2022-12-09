@@ -9,6 +9,7 @@ function Navbar(){
             <Link to="/cart">Cart</Link>
         </div>
         <div className="log">
+            <Link to='/login'><button>Login</button></Link>
             <Link to="/logout"><button>Logout</button></Link>
         </div>
         </>
