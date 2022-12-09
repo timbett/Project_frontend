@@ -1,7 +1,7 @@
 {
   "name": "front-end",
   "version": "0.1.0",
-  "proxy":"http://localhost:3000",
+  "proxy":"https://instant-eats-production.up.railway.app",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.4",

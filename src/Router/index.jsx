@@ -4,7 +4,8 @@ import HomePage from "../pages/Home";
 import NotFound from "../pages/404";
 import Products from "../pages/Products";
 import Cart from "../pages/Cart";
-import Navbar from '../pages/Navbar'
+import Navbar from "../pages/Navbar";
+import Login from '../pages/Login'
 // import Product from "../pages/Product";
 
 // const routes = [
@@ -17,17 +18,25 @@ import Navbar from '../pages/Navbar'
 export const MainRoute = () => {
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
-  const [ cartItems, setCartItems ] = useState([]);
-  const[newData, setNewData]=useState(false)
+  const [cartItems, setCartItems] = useState([]);
+  const [newData, setNewData] = useState(false);
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
-  function fetchCartItems(){
-    fetch('/cart')
-    .then(r => r.json())
-    .then(d => {
-      console.log(d)
-      setCartItems(d)
-    })
+  function fetchCartItems() {
+    fetch("/carts")
+      .then((r) => r.json())
+      .then((d) => {
+        console.log(d);
+        setCartItems(d);
+      });
   }
 
   useEffect(() => {
@@ -39,41 +48,60 @@ export const MainRoute = () => {
       });
   }, [newData]);
 
-  useEffect(()=>{
-    fetch('/users')
-    .then(r=>r.json())
-    .then(users=>{
-      console.log(users)
-      setUsers(users)
-    })
-  },[])
+  useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then((users) => {
+        console.log(users);
+        setUsers(users);
+      });
+  }, []);
 
-function newFetch(){
-  setNewData((newData)=>!newData)
-}
-  const[food, setFood]=useState({})
-
-  function addCart(foodId){
-    console.log(foodId)
-    fetch(`/foods/${foodId}`)
-    .then(r=>r.json())
-    .then((food)=>{
-      console.log(food)
-      setFood(food)
-    })
+  function newFetch() {
+    setNewData((newData) => !newData);
   }
+  const [food, setFood] = useState({});
 
+  function addCart(foodId) {
+    console.log(foodId);
+    fetch(`/foods/${foodId}`)
+      .then((r) => r.json())
+      .then((food) => {
+        console.log(food);
+        setFood(food);
+      });
+  }
 
   return (
     <>
-    <Navbar/>
-    <Routes>
-      <Route exact path="/" element={<HomePage />} />
-      <Route exact path="/not-found" element={<NotFound />} />
-      <Route exact path="/products" element={<Products addCart={addCart} products={products} users={users}/>} />
-      {/* <Route exact path="/product" element={<Product product={product} users={users}/>} /> */}
-    <Route exact path="/cart" element={<Cart newFetch={newFetch} food={food} users={users} products={cartItems} getUpdatedItems={fetchCartItems}/>} />
-    </Routes>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/not-found" element={<NotFound />} />
+        <Route
+          exact
+          path="/products"
+          element={
+            <Products addCart={addCart} products={products} users={users} />
+          }
+        />
+        <Route exact path="/login" element={<Login/>}/>
+        {/* <Route exact path="/product" element={<Product product={product} users={users}/>} /> */}
+        <Route
+          exact
+          path="/cart"
+          element={
+            <Cart
+              newFetch={newFetch}
+              user={user}
+              food={food}
+              users={users}
+              products={cartItems}
+              getUpdatedItems={fetchCartItems}
+            />
+          }
+        />
+      </Routes>
     </>
   );
 };
