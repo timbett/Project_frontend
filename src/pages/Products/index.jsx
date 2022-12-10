@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-export default function Products({products, users, addCart}) {
+export default function Products({products, addCart}) {
+  // eslint-disable-next-line no-unused-vars
   const [currentUser, setCurrentUser] = useState({})
   
   useEffect(() => {

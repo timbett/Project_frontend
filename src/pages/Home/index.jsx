@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./home.css"
 
 export default function HomePage({ onLogin }) {
+  // eslint-disable-next-line no-unused-vars
   const [name, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
