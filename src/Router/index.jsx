@@ -23,7 +23,7 @@ export const MainRoute = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/me").then((r) => {
+    fetch("https://instant-eats-production.up.railway.app/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
@@ -31,7 +31,7 @@ export const MainRoute = () => {
   }, []);
 
   function fetchCartItems() {
-    fetch("/carts")
+    fetch("https://instant-eats-production.up.railway.app/carts")
       .then((r) => r.json())
       .then((d) => {
         console.log(d);
@@ -40,7 +40,7 @@ export const MainRoute = () => {
   }
 
   useEffect(() => {
-    fetch("/foods")
+    fetch("https://instant-eats-production.up.railway.app/foods")
       .then((res) => res.json())
       .then((products) => {
         console.log(products);
@@ -49,7 +49,7 @@ export const MainRoute = () => {
   }, [newData]);
 
   useEffect(() => {
-    fetch("/users")
+    fetch("https://instant-eats-production.up.railway.app/users")
       .then((r) => r.json())
       .then((users) => {
         console.log(users);
@@ -64,7 +64,7 @@ export const MainRoute = () => {
 
   function addCart(foodId) {
     console.log(foodId);
-    fetch(`/foods/${foodId}`)
+    fetch(`https://instant-eats-production.up.railway.app/foods/${foodId}`)
       .then((r) => r.json())
       .then((food) => {
         console.log(food);

@@ -8,7 +8,7 @@ export default function Products({products, addCart}) {
   const [currentUser, setCurrentUser] = useState({})
   
   useEffect(() => {
-    fetch('/me')
+    fetch('https://instant-eats-production.up.railway.app/me')
     .then(r=>r.json())
     .then(user=>{
       console.log(user)

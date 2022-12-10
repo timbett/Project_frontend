@@ -9,7 +9,7 @@ function Cart({ food, newFetch }){
  
   function handleDelete(id){
     console.log(id)
-    fetch(`/foods/${id}`,{
+    fetch(`https://instant-eats-production.up.railway.app/foods/${id}`,{
       method:'DELETE'
     })
     newFetch()
