@@ -15,6 +15,8 @@ function Cart({ food, newFetch }){
     navigate('/products')
   }
     return (
+      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
       <div className="relative">
       <div className="relative h-72 overflow-hidden rounded-lg">
         <img
@@ -41,6 +43,8 @@ function Cart({ food, newFetch }){
         </p>
       </div>
       <button onClick={()=>handleDelete(food.id)}>Buy</button>
+    </div>
+    </div>
     </div>
   )
 }

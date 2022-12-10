@@ -1,7 +1,7 @@
 body{
-    /* background: url(/src/img/Diabetes-Superfoods-min.jpg);
-    background-size: cover; */
-    /* background: size 1500px; */
+    background: url(/src/img/pexels-pixabay-326281.jpg);
+    background-size: cover;
+    background: size 1500px;
    
 }
 label, input {
@@ -15,14 +15,21 @@ label {
 }
 
 form{
+    /* background-color: aquamarine; */
     margin-left: 400px;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
 }
 fieldset{
     border: 3px solid black;
+    background-image: url(/src/img/pexels-maksim-romashkin-7108217.jpg);
+    background-size: cover;
     padding: 10px;
     width: 70px;
 }
 legend{
+    border: none;
     font-size: larger;
     font-weight: bolder;
 }
